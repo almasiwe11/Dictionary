@@ -1,0 +1,56 @@
+.switcher {
+  background-color: var(--color-violet);
+  height: 1.3rem;
+  width: 2.6rem;
+  border-radius: 8rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+
+  &__circle {
+    border-radius: 50%;
+    background-color: white;
+    aspect-ratio: 1/1;
+    margin-left: 2px;
+    height: 80%;
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  &__logo {
+    margin-right: auto;
+  }
+}
+
+.dark {
+  transform: translateX(125%);
+}
+
+select {
+  appearance: none; /* Hide default arrow */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none;
+  border: none;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+}
+
+select option {
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.line {
+  border: 1px solid var(--color-white-grey);
+  height: 1.5rem;
+}
