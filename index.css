@@ -79,7 +79,8 @@ select option {
 }
 
 .word {
-  margin-top: 1.4rem;
+  margin-top: 1.3rem;
+  margin-bottom: 4rem;
 }
 .word__intro {
   display: flex;
@@ -93,7 +94,7 @@ select option {
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .word__hr {
   flex: 1;
@@ -118,11 +119,30 @@ select option {
   content: "•";
   color: var(--color-violet);
 }
+.word__meanings {
+  margin-top: 1.4rem;
+}
 
 .synonym {
   display: flex;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.3rem;
   margin-top: 1.4rem;
+  line-height: 1;
+}
+
+.antonym {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  line-height: 1;
+}
+
+.definition {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 :root {

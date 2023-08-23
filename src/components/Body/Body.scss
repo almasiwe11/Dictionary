@@ -1,5 +1,6 @@
 .word {
-  margin-top: 1.4rem;
+  margin-top: 1.3rem;
+  margin-bottom: 4rem;
   &__intro {
     display: flex;
     justify-content: space-between;
@@ -14,7 +15,7 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   &__hr {
@@ -46,10 +47,30 @@
       }
     }
   }
+
+  &__meanings {
+    margin-top: 1.4rem;
+  }
 }
 
 .synonym {
   display: flex;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.3rem;
   margin-top: 1.4rem;
+  line-height: 1;
+}
+
+.antonym {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 01rem;
+  line-height: 1;
+}
+
+.definition {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
