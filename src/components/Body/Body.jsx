@@ -6,7 +6,7 @@ function Body({ meaning }) {
   const { antonyms, definitions, partOfSpeech, synonyms } = meanings[0];
 
   const phonetic = phonetics.find((one) => one.audio.length > 0);
-  console.log(phonetic);
+  console.log(synonyms);
   return (
     <div className="word">
       <div className="word__intro">
@@ -20,6 +20,41 @@ function Body({ meaning }) {
       </div>
 
       {/* noun or verb different meanings will have to map */}
+      <div className="word__meanings">
+        <div className="word__partOfSpeech">
+          <h3>{partOfSpeech}</h3>
+          <div className="word__hr"></div>
+        </div>
+
+        <div className="word__meaning">
+          <p className="grey">Meaning</p>
+          <ul className="word__meaning-list">
+            {definitions.map((definition) => (
+              <li>
+                <p> {definition.definition}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {synonyms.length > 0 && (
+          <div className="synonym">
+            <p className="grey">Synonyms</p>{" "}
+            {synonyms.map((syno) => (
+              <span key={syno}>{syno}</span>
+            ))}
+          </div>
+        )}
+
+        {antonyms.length > 0 && (
+          <div className="antonim">
+            <p className="grey">Antonyms</p>{" "}
+            {antonyms.map((antonim) => (
+              <span key={antonim}>{antonim}</span>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

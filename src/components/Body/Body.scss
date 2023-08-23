@@ -9,4 +9,47 @@
       transform: scale(0.55);
     }
   }
+
+  &__partOfSpeech {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  &__hr {
+    flex: 1;
+    border: 1px solid var(--color-white-grey);
+    height: 1px;
+  }
+
+  &__meaning {
+    &-list {
+      margin-top: 1rem;
+
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      line-height: 1.2;
+      font-size: 0.9rem;
+
+      & li {
+        list-style: none;
+        display: flex;
+        gap: 0.4rem;
+        margin-left: 1rem;
+
+        &::before {
+          content: "•";
+          color: var(--color-violet);
+        }
+      }
+    }
+  }
+}
+
+.synonym {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 1.4rem;
 }

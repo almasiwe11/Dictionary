@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .switcher {
   background-color: var(--color-violet);
   height: 1.3rem;
@@ -88,6 +89,41 @@ select option {
 .word__intro-play svg {
   transform: scale(0.55);
 }
+.word__partOfSpeech {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.word__hr {
+  flex: 1;
+  border: 1px solid var(--color-white-grey);
+  height: 1px;
+}
+.word__meaning-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  line-height: 1.2;
+  font-size: 0.9rem;
+}
+.word__meaning-list li {
+  list-style: none;
+  display: flex;
+  gap: 0.4rem;
+  margin-left: 1rem;
+}
+.word__meaning-list li::before {
+  content: "•";
+  color: var(--color-violet);
+}
+
+.synonym {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 1.4rem;
+}
 
 :root {
   --color-red: #ff5252;
@@ -116,6 +152,14 @@ select option {
 
 .app {
   padding-top: 2.4rem;
+}
+
+.grey {
+  color: var(--color-grey);
+}
+
+span {
+  color: var(--color-violet);
 }
 
 /*# sourceMappingURL=index.css.map */
