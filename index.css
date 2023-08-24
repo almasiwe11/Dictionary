@@ -182,4 +182,20 @@ span {
   color: var(--color-violet);
 }
 
+.notfound {
+  height: 15rem;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.emoji {
+  font-size: 3rem;
+}
+
+.spinner {
+  margin-top: 5rem;
+}
+
 /*# sourceMappingURL=index.css.map */

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Meaning from "./Meaning";
 
 function Body({ meaning }) {
-  // console.log(meaning);
+  if (!meaning) return;
   const audioRef = useRef(null);
 
   const { phonetics, word } = meaning[0];
@@ -29,8 +29,6 @@ function Body({ meaning }) {
           </div>
         )}
       </div>
-
-      {/* noun or verb different meanings will have to map */}
 
       {meaning.map((meanings) => (
         <>

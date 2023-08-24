@@ -1,13 +1,19 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 function Search({ searchQuery, setSearchQuery }) {
+  const navigate = useNavigate();
+
+  function handleChange(e) {
+    setSearchQuery(e.target.value);
+    navigate(`${e.target.value}`);
+  }
   return (
     <div className="search">
       <input
         className="search__input"
         type="text"
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={handleChange}
       />
       <MagnifyingGlass />
     </div>
