@@ -2,8 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 function Test() {
-  const { word } = useParams();
-  return <div>{word} </div>;
+  const { test } = useParams();
+  return <div>{test} </div>;
 }
 
 export default Test;

@@ -1,61 +1,94 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Meaning from "./Meaning";
+import Found from "./Found";
+import { useParams } from "react-router-dom";
+import NotFound from "../../components/NotFound";
 
-function Body({ meaning }) {
+function Body() {
+  const [meaning, setMeaning] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [noMatch, setNoMatch] = useState(false);
+
+  const { word } = useParams();
+
+  useEffect(() => {
+    const controller = new AbortController();
+    async function getTranslation() {
+      try {
+        setIsLoading(true);
+        const data = await fetch(
+          `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
+          { signal: controller.signal }
+        );
+        const res = await data.json();
+        setMeaning(res);
+        console.log(res);
+        res.title && setNoMatch(true);
+        setIsLoading(false);
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          console.error(err);
+        }
+      }
+    }
+
+    if (word.length) {
+      getTranslation();
+    }
+
+    return () => {
+      controller.abort();
+    };
+  }, [word]);
+
   if (!meaning) return;
-  const audioRef = useRef(null);
-
-  const { phonetics, word } = meaning[0];
-  const phonetic = phonetics.find((one) => one.audio.length > 0);
-
-  function handleAudio() {
-    const audio = audioRef.current;
-    audio.play();
-  }
-
   return (
-    <div className="word">
-      <div className="word__intro">
-        <div className="word__intro-name">
-          <h1>{word}</h1>
-          {phonetic && <span>{phonetic.text}</span>}
-        </div>
-        {phonetic && (
-          <div className="word__intro-play">
-            <Play onClick={handleAudio} />
-            <audio ref={audioRef}>
-              <source src={phonetic.audio} />
-            </audio>
-          </div>
-        )}
-      </div>
-
-      {meaning.map((meanings) => (
-        <>
-          {meanings.meanings.map((each) => (
-            <Meaning meaning={each} />
-          ))}
-        </>
-      ))}
-    </div>
+    <>
+      {isLoading ? (
+        <Spinner />
+      ) : noMatch ? (
+        <NotFound text={meaning} />
+      ) : (
+        <Found meaning={meaning} />
+      )}
+    </>
   );
 }
 
 export default Body;
 
-function Play({ onClick }) {
+function Spinner() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="75"
-      height="75"
-      viewBox="0 0 75 75"
-      onClick={onClick}
-    >
-      <g fill="#A445ED" fillRule="evenodd">
-        <circle cx="37.5" cy="37.5" r="37.5" opacity=".25" />
-        <path d="M29 27v21l21-10.5z" />
-      </g>
-    </svg>
+    <div className="spinner">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        style={{
+          margin: "auto",
+          background: "white",
+          display: "block",
+          shapeRendering: "auto",
+        }}
+        width="80px"
+        height="80px"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid"
+      >
+        <path
+          d="M10 50A40 40 0 0 0 90 50A40 42.2 0 0 1 10 50"
+          fill="#a445ed"
+          stroke="none"
+        >
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            dur="1s"
+            repeatCount="indefinite"
+            keyTimes="0;1"
+            values="0 50 51.1;360 50 51.1"
+          />
+        </path>
+      </svg>
+    </div>
   );
 }
