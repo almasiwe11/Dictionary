@@ -4,12 +4,12 @@ import Found from "./Found";
 import { useParams } from "react-router-dom";
 import NotFound from "../../components/NotFound";
 
-function Body() {
+function Body({ theWord }) {
   const [meaning, setMeaning] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [noMatch, setNoMatch] = useState(false);
 
-  const { word } = useParams();
+  const word = theWord.get("word");
 
   useEffect(() => {
     const controller = new AbortController();
@@ -23,7 +23,7 @@ function Body() {
         const res = await data.json();
         setMeaning(res);
         console.log(res);
-        res.title && setNoMatch(true);
+        res.title ? setNoMatch(true) : setNoMatch(false);
         setIsLoading(false);
       } catch (err) {
         if (err.name !== "AbortError") {
@@ -32,8 +32,10 @@ function Body() {
       }
     }
 
-    if (word.length) {
+    if (word.length > 0) {
       getTranslation();
+    } else {
+      setIsLoading(false);
     }
 
     return () => {
