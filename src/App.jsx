@@ -6,7 +6,9 @@ import { BrowserRouter, Routes, Route, useSearchParams } from "react-router-dom"
 
 function App() {
   const [theWord, setTheWord] = useSearchParams()
-  const [isDarkmode, setIsDarkmode] = useState(true)
+  const theme = localStorage.getItem("theme")
+  const fromStorage = theme !== null ? JSON.parse(theme) : true
+  const [isDarkmode, setIsDarkmode] = useState(fromStorage)
   const [fontFamiliy, setFontFamiliy] = useState("serif")
   return (
     <div className={`app ${isDarkmode && "dark-mode"} ${fontFamiliy} `}>
@@ -20,7 +22,10 @@ function App() {
 
         <Routes>
           {theWord.size && (
-            <Route path="/" element={<Body theWord={theWord} />}></Route>
+            <Route
+              path="/"
+              element={<Body theWord={theWord} isDarkmode={isDarkmode} />}
+            ></Route>
           )}
         </Routes>
       </div>

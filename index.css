@@ -173,6 +173,10 @@
   font-family: monospace, serif;
 }
 
+.play {
+  cursor: pointer;
+}
+
 :root {
   --color-red: #ff5252;
   --color-violet: #a445ed;

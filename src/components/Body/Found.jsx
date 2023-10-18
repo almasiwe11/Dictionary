@@ -32,8 +32,8 @@ function Found({ meaning }) {
 
       {meaning.map((meanings) => (
         <>
-          {meanings.meanings.map((each) => (
-            <Meaning meaning={each} />
+          {meanings.meanings.map((each, i) => (
+            <Meaning meaning={each} key={i} />
           ))}
         </>
       ))}
@@ -51,6 +51,7 @@ function Play({ onClick }) {
       height="75"
       viewBox="0 0 75 75"
       onClick={onClick}
+      className="play"
     >
       <g fill="#A445ED" fillRule="evenodd">
         <circle cx="37.5" cy="37.5" r="37.5" opacity=".25" />

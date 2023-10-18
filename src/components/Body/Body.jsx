@@ -1,65 +1,65 @@
-import React, { useRef, useState, useEffect } from "react";
-import Meaning from "./Meaning";
-import Found from "./Found";
-import { useParams } from "react-router-dom";
-import NotFound from "../../components/NotFound";
+import React, { useRef, useState, useEffect } from "react"
+import Meaning from "./Meaning"
+import Found from "./Found"
+import { useParams } from "react-router-dom"
+import NotFound from "../../components/NotFound"
 
-function Body({ theWord }) {
-  const [meaning, setMeaning] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [noMatch, setNoMatch] = useState(false);
+function Body({ theWord, isDarkmode }) {
+  const [meaning, setMeaning] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const [noMatch, setNoMatch] = useState(false)
 
-  const word = theWord.get("word");
+  const word = theWord.get("word")
 
   useEffect(() => {
-    const controller = new AbortController();
+    const controller = new AbortController()
     async function getTranslation() {
       try {
-        setIsLoading(true);
+        setIsLoading(true)
         const data = await fetch(
           `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`,
           { signal: controller.signal }
-        );
-        const res = await data.json();
-        setMeaning(res);
-        console.log(res);
-        res.title ? setNoMatch(true) : setNoMatch(false);
-        setIsLoading(false);
+        )
+        const res = await data.json()
+        setMeaning(res)
+        console.log(res)
+        res.title ? setNoMatch(true) : setNoMatch(false)
+        setIsLoading(false)
       } catch (err) {
         if (err.name !== "AbortError") {
-          console.error(err);
+          console.error(err)
         }
       }
     }
 
     if (word.length > 0) {
-      getTranslation();
+      getTranslation()
     } else {
-      setIsLoading(false);
+      setIsLoading(false)
     }
 
     return () => {
-      controller.abort();
-    };
-  }, [word]);
+      controller.abort()
+    }
+  }, [word])
 
-  if (!meaning) return;
+  if (!meaning) return
   return (
     <>
       {isLoading ? (
-        <Spinner />
+        <Spinner isDarkmode={isDarkmode} />
       ) : noMatch ? (
         <NotFound text={meaning} />
       ) : (
         <Found meaning={meaning} />
       )}
     </>
-  );
+  )
 }
 
-export default Body;
+export default Body
 
-function Spinner() {
+function Spinner(isDarkmode) {
   return (
     <div className="spinner">
       <svg
@@ -67,7 +67,7 @@ function Spinner() {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         style={{
           margin: "auto",
-          background: "white",
+          background: isDarkmode.isDarkmode ? "black" : "white",
           display: "block",
           shapeRendering: "auto",
         }}
@@ -92,5 +92,5 @@ function Spinner() {
         </path>
       </svg>
     </div>
-  );
+  )
 }
