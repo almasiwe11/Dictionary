@@ -1,26 +1,38 @@
-.search {
-  width: 100%;
-  position: relative;
-  margin-top: 2rem;
-
-  &__input {
+.app {
+  .search {
     width: 100%;
-    padding: 0.6rem;
-    border-radius: 9px;
-    border: none;
-    background-color: var(--color-white-grey);
-    font-size: 1rem;
-    font-weight: 500;
+    position: relative;
+    margin-top: 2rem;
 
-    &:focus {
-      outline: 1px solid var(--color-violet);
+    &__input {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 9px;
+      border: none;
+      background-color: var(--color-white-grey);
+      font-size: 1rem;
+      font-weight: 500;
+      transition: 0.3s ease-in-out;
+
+      &:focus {
+        outline: 1px solid var(--color-violet);
+      }
+    }
+
+    & svg {
+      position: absolute;
+      right: 2%;
+      top: 50%;
+      transform: translateY(-50%) scale(0.8);
     }
   }
 
-  & svg {
-    position: absolute;
-    right: 2%;
-    top: 50%;
-    transform: translateY(-50%) scale(0.8);
+  &.dark-mode {
+    .search {
+      &__input {
+        background-color: var(--color-grey-black);
+        color: var(--color-white);
+      }
+    }
   }
 }

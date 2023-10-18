@@ -1,76 +1,86 @@
-.word {
-  margin-top: 1.3rem;
-  margin-bottom: 4rem;
-  &__intro {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &-play svg {
-      transform: scale(0.55);
-    }
-  }
-
-  &__partOfSpeech {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-bottom: 1.5rem;
-  }
-
-  &__hr {
-    flex: 1;
-    border: 1px solid var(--color-white-grey);
-    height: 1px;
-  }
-
-  &__meaning {
-    &-list {
-      margin-top: 1rem;
-
+.app {
+  padding: 2.4rem 0;
+  transition: 0.3s ease-in-out;
+  .word {
+    margin-top: 1.3rem;
+    &__intro {
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      line-height: 1.2;
-      font-size: 0.9rem;
+      justify-content: space-between;
+      align-items: center;
 
-      & li {
-        list-style: none;
+      &-play svg {
+        transform: scale(0.55);
+      }
+    }
+
+    &__partOfSpeech {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    &__hr {
+      flex: 1;
+      border: 1px solid var(--color-white-grey);
+      height: 1px;
+    }
+
+    &__meaning {
+      &-list {
+        margin-top: 1rem;
+
         display: flex;
-        gap: 0.4rem;
-        margin-left: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        line-height: 1.2;
+        font-size: 0.9rem;
 
-        &::before {
-          content: "•";
-          color: var(--color-violet);
+        & li {
+          list-style: none;
+          display: flex;
+          gap: 0.4rem;
+          margin-left: 1rem;
+
+          &::before {
+            content: "•";
+            color: var(--color-violet);
+          }
         }
       }
     }
+
+    &__meanings {
+      margin-top: 1.4rem;
+    }
   }
 
-  &__meanings {
+  &.dark-mode {
+    background-color: var(--color-black);
+    .word {
+      color: white;
+    }
+  }
+
+  .synonym {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
     margin-top: 1.4rem;
+    line-height: 1;
   }
-}
 
-.synonym {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin-top: 1.4rem;
-  line-height: 1;
-}
+  .antonym {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 1rem;
+    line-height: 1;
+  }
 
-.antonym {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin-top: 01rem;
-  line-height: 1;
-}
-
-.definition {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  .definition {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
 }

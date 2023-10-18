@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useRef } from "react";
-import Meaning from "./Meaning";
+import { useRef } from "react"
+import Meaning from "./Meaning"
 
 function Found({ meaning }) {
-  const audioRef = useRef(null);
+  const audioRef = useRef(null)
 
-  const { phonetics, word } = meaning[0];
-  const phonetic = phonetics.find((one) => one.audio.length > 0);
+  const { phonetics, word } = meaning[0]
+  const phonetic = phonetics.find((one) => one.audio.length > 0)
 
   function handleAudio() {
-    const audio = audioRef.current;
-    audio.play();
+    const audio = audioRef.current
+    audio.play()
   }
 
   return (
@@ -38,10 +38,10 @@ function Found({ meaning }) {
         </>
       ))}
     </div>
-  );
+  )
 }
 
-export default Found;
+export default Found
 
 function Play({ onClick }) {
   return (
@@ -57,5 +57,5 @@ function Play({ onClick }) {
         <path d="M29 27v21l21-10.5z" />
       </g>
     </svg>
-  );
+  )
 }

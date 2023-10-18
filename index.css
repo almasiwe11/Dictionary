@@ -1,6 +1,6 @@
 @charset "UTF-8";
-.switcher {
-  background-color: var(--color-violet);
+.app .switcher {
+  background-color: var(--color-grey);
   height: 1.3rem;
   width: 2.6rem;
   border-radius: 8rem;
@@ -8,8 +8,9 @@
   align-items: center;
   position: relative;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
-.switcher__circle {
+.app .switcher__circle {
   border-radius: 50%;
   background-color: white;
   aspect-ratio: 1/1;
@@ -17,49 +18,51 @@
   height: 80%;
   transition: 0.3s ease-in-out;
 }
-
-.header {
+.app .header {
   display: flex;
   gap: 1rem;
   align-items: center;
 }
-.header__logo {
+.app .header__logo {
   margin-right: auto;
 }
-
-.dark {
+.app .dark {
   transform: translateX(125%);
 }
-
-select {
-  appearance: none; /* Hide default arrow */
-  -webkit-appearance: none; /* For Safari */
+.app select {
+  appearance: none;
+  -webkit-appearance: none;
   -moz-appearance: none;
   border: none;
   padding: 0.4rem;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
-
-select:focus {
+.app select:focus {
   outline: none;
 }
-
-select option {
+.app select option {
   border-radius: 6px;
   cursor: pointer;
 }
-
-.line {
+.app .line {
   border: 1px solid var(--color-white-grey);
   height: 1.5rem;
 }
+.app.dark-mode select {
+  background-color: black;
+  color: white;
+}
+.app.dark-mode .switcher {
+  background-color: var(--color-violet);
+}
 
-.search {
+.app .search {
   width: 100%;
   position: relative;
   margin-top: 2rem;
 }
-.search__input {
+.app .search__input {
   width: 100%;
   padding: 0.6rem;
   border-radius: 9px;
@@ -67,41 +70,49 @@ select option {
   background-color: var(--color-white-grey);
   font-size: 1rem;
   font-weight: 500;
+  transition: 0.3s ease-in-out;
 }
-.search__input:focus {
+.app .search__input:focus {
   outline: 1px solid var(--color-violet);
 }
-.search svg {
+.app .search svg {
   position: absolute;
   right: 2%;
   top: 50%;
   transform: translateY(-50%) scale(0.8);
 }
-
-.word {
-  margin-top: 1.3rem;
-  margin-bottom: 4rem;
+.app.dark-mode .search__input {
+  background-color: var(--color-grey-black);
+  color: var(--color-white);
 }
-.word__intro {
+
+.app {
+  padding: 2.4rem 0;
+  transition: 0.3s ease-in-out;
+}
+.app .word {
+  margin-top: 1.3rem;
+}
+.app .word__intro {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.word__intro-play svg {
+.app .word__intro-play svg {
   transform: scale(0.55);
 }
-.word__partOfSpeech {
+.app .word__partOfSpeech {
   display: flex;
   gap: 1rem;
   align-items: center;
   margin-bottom: 1.5rem;
 }
-.word__hr {
+.app .word__hr {
   flex: 1;
   border: 1px solid var(--color-white-grey);
   height: 1px;
 }
-.word__meaning-list {
+.app .word__meaning-list {
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -109,37 +120,40 @@ select option {
   line-height: 1.2;
   font-size: 0.9rem;
 }
-.word__meaning-list li {
+.app .word__meaning-list li {
   list-style: none;
   display: flex;
   gap: 0.4rem;
   margin-left: 1rem;
 }
-.word__meaning-list li::before {
+.app .word__meaning-list li::before {
   content: "•";
   color: var(--color-violet);
 }
-.word__meanings {
+.app .word__meanings {
   margin-top: 1.4rem;
 }
-
-.synonym {
+.app.dark-mode {
+  background-color: var(--color-black);
+}
+.app.dark-mode .word {
+  color: white;
+}
+.app .synonym {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
   margin-top: 1.4rem;
   line-height: 1;
 }
-
-.antonym {
+.app .antonym {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
   margin-top: 1rem;
   line-height: 1;
 }
-
-.definition {
+.app .definition {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -168,10 +182,6 @@ select option {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-}
-
-.app {
-  padding-top: 2.4rem;
 }
 
 .grey {

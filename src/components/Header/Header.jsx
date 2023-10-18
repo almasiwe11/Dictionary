@@ -1,11 +1,11 @@
-import React from "react";
-import Switcher from "./Parts/Switcher";
+import React from "react"
+import Switcher from "./Parts/Switcher"
 
-function Header() {
+function Header({ isDarkmode, setIsDarkmode }) {
   return (
     <div className="header">
       <div className="header__logo">
-        <Logo />
+        <Logo isDarkmode={isDarkmode} />
       </div>
       <div className="select">
         <select name="" id="">
@@ -16,15 +16,15 @@ function Header() {
         <ArrowDown />
       </div>
       <div className="line"></div>
-      <Switcher />
-      <Moon />
+      <Switcher isDarkmode={isDarkmode} setIsDarkmode={setIsDarkmode} />
+      <Moon isDarkmode={isDarkmode} />
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
 
-function Logo() {
+function Logo({ isDarkmode }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ function Logo() {
       <g
         fill="none"
         fillRule="evenodd"
-        stroke="#838383"
+        stroke={`${isDarkmode ? "#a445ed" : "#838383"} `}
         strokeLinecap="round"
         strokeWidth="1.5"
       >
@@ -44,7 +44,7 @@ function Logo() {
         <path d="M11 9h12" />
       </g>
     </svg>
-  );
+  )
 }
 
 function ArrowDown() {
@@ -57,10 +57,10 @@ function ArrowDown() {
     >
       <path fill="none" stroke="#A445ED" strokeWidth="1.5" d="m1 1 6 6 6-6" />
     </svg>
-  );
+  )
 }
 
-function Moon() {
+function Moon({ isDarkmode }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -70,12 +70,12 @@ function Moon() {
     >
       <path
         fill="none"
-        stroke="#838383"
+        stroke={`${isDarkmode ? "#a445ed" : "#838383"} `}
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"
       />
     </svg>
-  );
+  )
 }
