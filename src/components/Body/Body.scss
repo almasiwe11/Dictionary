@@ -1,4 +1,5 @@
 .app {
+  min-height: 100vh;
   padding: 2.4rem 0;
   transition: 0.3s ease-in-out;
   .word {
@@ -83,4 +84,16 @@
     flex-direction: column;
     gap: 0.4rem;
   }
+}
+
+.serif {
+  font-family: serif, fantasy;
+}
+
+.sans-serif {
+  font-family: sans-serif, serif;
+}
+
+.mono {
+  font-family: monospace, serif;
 }

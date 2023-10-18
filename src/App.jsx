@@ -6,12 +6,16 @@ import { BrowserRouter, Routes, Route, useSearchParams } from "react-router-dom"
 
 function App() {
   const [theWord, setTheWord] = useSearchParams()
-  const [isDarkmode, setIsDarkmode] = useState(false)
-
+  const [isDarkmode, setIsDarkmode] = useState(true)
+  const [fontFamiliy, setFontFamiliy] = useState("serif")
   return (
-    <div className={`app ${isDarkmode && "dark-mode"} `}>
+    <div className={`app ${isDarkmode && "dark-mode"} ${fontFamiliy} `}>
       <div className="container">
-        <Header isDarkmode={isDarkmode} setIsDarkmode={setIsDarkmode} />
+        <Header
+          isDarkmode={isDarkmode}
+          setIsDarkmode={setIsDarkmode}
+          setFontFamiliy={setFontFamiliy}
+        />
         <Search setTheWord={setTheWord} theWord={theWord} />
 
         <Routes>

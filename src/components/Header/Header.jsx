@@ -1,17 +1,21 @@
 import React from "react"
 import Switcher from "./Parts/Switcher"
 
-function Header({ isDarkmode, setIsDarkmode }) {
+function Header({ isDarkmode, setIsDarkmode, setFontFamiliy }) {
+  function handleChange(e) {
+    console.log(e.target.value)
+    setFontFamiliy(e.target.value)
+  }
   return (
     <div className="header">
       <div className="header__logo">
         <Logo isDarkmode={isDarkmode} />
       </div>
       <div className="select">
-        <select name="" id="">
+        <select name="fonts" onChange={handleChange}>
           <option value="sans-serif">Sans Serif</option>
           <option value="serif">Serif</option>
-          <option value="sans-serif"> Mono</option>
+          <option value="mono"> Mono</option>
         </select>
         <ArrowDown />
       </div>
